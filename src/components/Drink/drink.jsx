@@ -1,3 +1,6 @@
+import "./drink.css"
+import { Layer } from "../Layer/layer"
+
 export const Drink = ( {name, image}) => {
   return (
     <div className="drink">
@@ -7,14 +10,11 @@ export const Drink = ( {name, image}) => {
         </div>
         <div className="drink__info">
           <h3>{name}</h3>
-          <div className="layer">
-            <div className="layer__color" style={{ backgroundColor: '#613916' }}></div>
-            <div className="layer__label">espresso</div>
-          </div>
+          <Layer />
         </div>
       </div>
       <form className="drink__controls">
-        <input className="order-id" value="0" />
+        <input type="hidden" className="order-id" value="0" />
         <button className="order-btn">
           Objednat
         </button>
