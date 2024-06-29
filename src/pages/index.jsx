@@ -11,16 +11,14 @@ import { Footer } from '../components/Footer/footer';
 
 
 const response = await fetch('http://localhost:4000/api/drinks');
-const zkurvena = await response.json();
-
-console.log(zkurvena);
+const data = await response.json();
 
 document.querySelector('#root').innerHTML = render(
   <div className="page">
     <Header />
     <main>
       <Banner />
-      <Menu drinks={zkurvena}/>
+      <Menu drinks={data}/>
       <Gallery />
       <Contact />
     </main>
@@ -36,3 +34,22 @@ function handleNavigation() {
 
 document.querySelector('.nav-btn').addEventListener("click", handleNavigation);
 document.querySelector('.rollout-nav').addEventListener("click", handleNavigation);
+
+document.querySelectorAll('.drink__controls').forEach(form => {
+  form.querySelector('button').addEventListener('click', async (event) => {
+    event.preventDefault();
+    const drinkId = form.dataset.id;
+
+    const isOrdered = form.querySelector('button').classList.contains('order-btn--ordered');
+
+    const response = await fetch(`http://localhost:4000/api/drinks/${drinkId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([{ op: 'replace', path: '/ordered', value: !isOrdered }]),
+    });
+
+    location.reload();
+  });
+});
