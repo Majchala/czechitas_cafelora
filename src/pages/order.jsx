@@ -14,7 +14,7 @@ import { Order } from '../components/Order/order';
   const root = document.querySelector('#root');
   root.innerHTML = render(
     <div className="page">
-      <Header showMenu={false} />
+      <Header showMenu={true} />
       <Order items={data} /> 
       <Footer />
     </div>
