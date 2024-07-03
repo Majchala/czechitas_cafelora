@@ -1,8 +1,9 @@
 import "./gallery.css"
+import galleryImage from '../../pages/img/gallery.jpg'; 
 
 export const Gallery = () => {
   return (
-    <section className="gallery">
+    <section id="gallery" className="gallery" style={{ backgroundImage: `url(${galleryImage})` }}>
       <div className="container">
         <div className="gallery__content">
           <h2>Nově otevřeno!</h2>

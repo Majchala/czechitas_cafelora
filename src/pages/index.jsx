@@ -1,5 +1,6 @@
 import { render } from '@czechitas/render';
 import '../global.css';
+import spotsImage from '../pages/img/spots.png'; 
 
 import { Header } from '../components/Header/header';
 import { Banner } from '../components/Banner/banner';
@@ -8,16 +9,15 @@ import { Gallery } from '../components/Gallery/gallery';
 import { Contact } from '../components/Contact/contact';
 import { Footer } from '../components/Footer/footer';
 
-
 const response = await fetch('http://localhost:4000/api/drinks');
 const data = await response.json();
 
 document.querySelector('#root').innerHTML = render(
-  <div className="page">
+  <div className="page" style={{ backgroundImage: `url(${spotsImage})` }}>
     <Header showMenu={true} />
     <main>
       <Banner />
-      <Menu drinks={data}/>
+      <Menu drinks={data} />
       <Gallery />
       <Contact />
     </main>
@@ -52,3 +52,17 @@ document.querySelectorAll('.drink__controls').forEach(form => {
     location.reload();
   });
 });
+
+// correct scroll behavior
+function scrollToHash() {
+  const { hash } = window.location;
+  if (hash) {
+    const target = document.querySelector(hash);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
+
+scrollToHash();
+window.addEventListener('hashchange', scrollToHash);

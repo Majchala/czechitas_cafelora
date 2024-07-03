@@ -1,8 +1,9 @@
 import "./contact.css"
+import mapImage from '../../pages/img/map.png'; 
 
 export const Contact = () => {
   return (
-    <section>
+    <section id="contact">
       <div className="container">
         <h2>Kde nás najdete</h2>
           <div className="contact">
@@ -21,7 +22,7 @@ export const Contact = () => {
             </table>
             <img
               className="contact__map"
-              src="src/pages/img/map.png"
+              src={mapImage}
             />
           </div>
       </div>

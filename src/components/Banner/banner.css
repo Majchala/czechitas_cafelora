@@ -1,8 +1,6 @@
-
 /* Banner */
 .banner {
   padding-top: 0;
-  background-image: url("src/pages/img/beans.jpg");
   background-size: cover;
   background-position: top center;
 }

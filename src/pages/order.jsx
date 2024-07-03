@@ -12,11 +12,11 @@ import { Order } from '../components/Order/order';
   console.log(data);
 
   const root = document.querySelector('#root');
-  root.innerHTML = render(
-    <div className="page">
-      <Header showMenu={true} />
-      <Order items={data} /> 
-      <Footer />
-    </div>
-  );
+    root.innerHTML = render(
+      <div className="page">
+        <Header showMenu={true} />
+        <Order items={data} /> 
+        <Footer />
+      </div>
+    );
 })();
